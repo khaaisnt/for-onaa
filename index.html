@@ -3,16 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="stylesheet" href="style.css" />
+    <title>For Onaa</title>
+    <link rel="stylesheet" href="src/output.css" />
   </head>
-  <script>
-    alert("Hi! Onaa");
-    alert("Semangat yaa ujiannya!");
-    alert("Semoga lancarr okii");
-    alert("Bai baii -Kha");
-  </script>
   <body>
-    <h1>Helloo👋</h1>
+    <div class="justify-center flex place-items-center mt-5">
+      <form>
+        <button
+          type="button"
+          class="bg-red-700 hover:bg-red-900 shadow-sm rounded-lg py-2 px-5 text-white"
+        >
+          Klik Aku!
+        </button>
+        <h1><span class="typed-text"></span><span class="cursor"></span></h1>
+      </form>
+    </div>
+
+    <script>
+      let btn = document.getElementsByTagName("button")[0];
+
+      btn.addEventListener("click", function () {
+        btn.style.display = "none";
+        const typedTextSpan = document.querySelector(".typed-text");
+        const cursorSpan = document.querySelector(".cursor");
+
+        const textArray = [
+          "Haloo lagi Onaa!",
+          "Btw btw btw",
+          "Onaa menang kemarin bisa nebak wkwkwk",
+          "Jadi aku mau menepati janjiku hehe",
+          "Onaa, jangan lupa ambil hadiahmu yaa besok",
+          "Bai baii Naooo👋",
+        ];
+        const typingDelay = 85;
+        const erasingDelay = 50;
+        const newTextDelay = 1200;
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+          if (charIndex < textArray[textArrayIndex].length) {
+            if (!cursorSpan.classList.contains("typing"))
+              cursorSpan.classList.add("typing");
+            typedTextSpan.textContent +=
+              textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+          } else {
+            cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+          }
+        }
+
+        function erase() {
+          if (charIndex > 0) {
+            if (!cursorSpan.classList.contains("typing"))
+              cursorSpan.classList.add("typing");
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(
+              0,
+              charIndex - 1
+            );
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+          } else {
+            cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay + 1100);
+          }
+        }
+
+        if (textArray.length) setTimeout(type, newTextDelay + 250);
+      });
+    </script>
   </body>
 </html>
