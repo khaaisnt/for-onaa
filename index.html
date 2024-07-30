@@ -7,73 +7,35 @@
     <link rel="stylesheet" href="src/output.css" />
   </head>
   <body>
-    <div class="justify-center flex place-items-center mt-5">
-      <form>
+    <div class="text-center pt-5">
+      <h2 class="text-[30px] font-semibold">Pilih 1 atau 2</h2>
+      <form class="mt-3">
         <button
           type="button"
-          class="bg-red-700 hover:bg-red-900 shadow-sm rounded-lg py-2 px-5 text-white"
+          class="bg-red-500 hover:bg-red-700 py-2 px-4 mr-3 rounded-md text-white"
         >
-          Klik Aku!
+          1
         </button>
-        <h1><span class="typed-text"></span><span class="cursor"></span></h1>
+        <button
+          type="button"
+          class="bg-blue-500 hover:bg-blue-700 py-2 px-4 mr-4 rounded-md text-white"
+        >
+          2
+        </button>
       </form>
     </div>
 
     <script>
-      let btn = document.getElementsByTagName("button")[0];
+      let btn1 = document.getElementsByTagName("button")[0];
+      let btn2 = document.getElementsByTagName("button")[1];
 
-      btn.addEventListener("click", function () {
-        btn.style.display = "none";
-        const typedTextSpan = document.querySelector(".typed-text");
-        const cursorSpan = document.querySelector(".cursor");
+      btn1.addEventListener("click", function () {
+        alert("ZONKK");
+      });
 
-        const textArray = [
-          "Haloo lagi Onaa!",
-          "Btw btw btw",
-          "Onaa menang kemarin bisa nebak wkwkwk",
-          "Jadi aku mau menepati janjiku hehe",
-          "Onaa, jangan lupa ambil hadiahmu yaa besok",
-          "Bai baii Naooo👋",
-        ];
-        const typingDelay = 85;
-        const erasingDelay = 50;
-        const newTextDelay = 1200;
-        let textArrayIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-          if (charIndex < textArray[textArrayIndex].length) {
-            if (!cursorSpan.classList.contains("typing"))
-              cursorSpan.classList.add("typing");
-            typedTextSpan.textContent +=
-              textArray[textArrayIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, typingDelay);
-          } else {
-            cursorSpan.classList.remove("typing");
-            setTimeout(erase, newTextDelay);
-          }
-        }
-
-        function erase() {
-          if (charIndex > 0) {
-            if (!cursorSpan.classList.contains("typing"))
-              cursorSpan.classList.add("typing");
-            typedTextSpan.textContent = textArray[textArrayIndex].substring(
-              0,
-              charIndex - 1
-            );
-            charIndex--;
-            setTimeout(erase, erasingDelay);
-          } else {
-            cursorSpan.classList.remove("typing");
-            textArrayIndex++;
-            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-            setTimeout(type, typingDelay + 1100);
-          }
-        }
-
-        if (textArray.length) setTimeout(type, newTextDelay + 250);
+      btn2.addEventListener("click", function () {
+        window.location.href =
+          "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v?si=8df554e0b06c48e2";
       });
     </script>
   </body>
